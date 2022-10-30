@@ -1,0 +1,30 @@
+﻿@using u20540176_HW06.Models
+@{
+    ViewBag.Title = "Chart";
+}
+
+<h2>Chart</h2>
+
+<div class="container">
+    <canvas id="barChart" width="400" height="400"></canvas>
+</div>
+@section Scripts{
+    <script src="@Url.Content("~/Content/Scripts/jquery-1.8.3.min.js")"
+            type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/Scripts/bootstrap.min.js")"
+            type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+
+
+    <script>
+        var barChartCtx = document.getElementById("barChart");
+        var barChart = new Chart(barChartCtx, {
+            type: 'bar',
+            data: {
+                @*labels: @Html.Raw(Json.Serialize(Model.product.Keys)),*@
+                datasets: {
+
+                }
+            });
+        </script>
+}

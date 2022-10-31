@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,5 +24,25 @@ namespace u20540176_HW06.Controllers
 
 
         }
+
+        public string GetEmployeeOrderData()
+        {
+            List<EmpOrder> obj = db.orders.Select(o => new EmpOrder
+            {
+                OrderID = o.order_id,
+                Amount = (double)o.order_items.Sum(s => s.list_price * s.quantity),
+                StaffID = o.staff_id,
+            }).ToList();
+
+            List<object> list = new List<object>();
+            foreach (staff staff in db.staffs.ToList())
+            {
+                double amount = obj.Where(o => o.StaffID == staff.staff_id).Sum(o => o.Amount);
+                list.Add(new { Amount = Math.Round(amount), Name = staff.first_name + " " + staff.last_name });
+            }
+
+            return JsonConvert.SerializeObject(list);
+        }
     }
 }
+    

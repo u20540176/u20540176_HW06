@@ -9,7 +9,7 @@
 <h2>Orders</h2>
 
 <p>
-    @using (Html.BeginForm("Index", "Orders", FormMethod.Get))
+    @using (Html.BeginForm("Orders", "Orders", FormMethod.Get))
     {
         <input type="date" id="searchbar" name="search" placeholder="yyyy/mm/dd" />
         <input type="submit" name="submit" value="Search" />

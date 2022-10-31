@@ -25,7 +25,7 @@ namespace u20540176_HW06.Controllers
             //return View(products.ToList());
         }
 
-       
+      
         // GET: products/Details/5
         public ActionResult Details(int? id)
         {
